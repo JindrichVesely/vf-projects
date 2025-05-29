@@ -14,7 +14,7 @@ Select Case Mid(WScript.ScriptName, InStr(WScript.ScriptName, "@") + 1, Len(WScr
         lokalita = lokalita1_adresa
     Case lokalita2
         lokalita = lokalita2_adresa
-    Case lokalita3_adresa
+    Case lokalita3
         lokalita = lokalita3_adresa
     Case Else
         WScript.Echo "Lokalita nenalezena"
@@ -37,18 +37,22 @@ i = 3
 Do While fSheet.Cells(i, 1) <> ""
     If fSheet.Cells(i, 5) <> "Yes" Then 'Date - Nothing flag - preskakuji Yes
         datum = fSheet.Cells(i, 3)
-        Select Case fSheet.Cells(i, 12)
+        Select Case fSheet.Cells(i, 16)
             Case "NVP-M"
                 fFile.WriteLine("Volno," & datum & ",0:00," & datum & ",0:00,True,,")
-            Case "VACA"
-                fFile.WriteLine("Dovolená," & datum & ",0:00," & datum & ",0:00,True,,")
             Case Else
-                If fSheet.Cells(i, 7) <> "" Then
-                    fFile.WriteLine("Směna," & datum & "," & FormatDateTime(fSheet.Cells(i, 6), 4) & "," & datum & "," & FormatDateTime(fSheet.Cells(i, 7), 4) & ",False," & lokalita & ",")
-                    fFile.WriteLine("Oběd," & datum & "," & FormatDateTime(fSheet.Cells(i, 7), 4) & "," & datum & "," & FormatDateTime(fSheet.Cells(i, 8), 4) & ",False," & lokalita & ",")
-                    fFile.WriteLine("Směna," & datum & "," & FormatDateTime(fSheet.Cells(i, 8), 4) & "," & datum & "," & FormatDateTime(fSheet.Cells(i, 9), 4) & ",False," & lokalita & ",")
+                If fSheet.Cells(i, 11) <> "" Then
+                    fFile.WriteLine("Dovolená," & datum & ",0:00," & datum & ",0:00,True,,")
+                ElseIf fSheet.Cells(i, 9) <> "" Then
+                    fFile.WriteLine("SickDay," & datum & ",0:00," & datum & ",0:00,True,,")
                 Else
-                    fFile.WriteLine("Směna," & datum & "," & FormatDateTime(fSheet.Cells(i, 6), 4) & "," & datum & "," & FormatDateTime(fSheet.Cells(i, 9), 4) & ",False," & lokalita & ",")
+                    If fSheet.Cells(i, 7) <> "" Then
+                        fFile.WriteLine("Směna," & datum & "," & FormatDateTime(fSheet.Cells(i, 6), 4) & "," & datum & "," & FormatDateTime(fSheet.Cells(i, 7), 4) & ",False," & lokalita & ",")
+                        fFile.WriteLine("Oběd," & datum & "," & FormatDateTime(fSheet.Cells(i, 7), 4) & "," & datum & "," & FormatDateTime(fSheet.Cells(i, 8), 4) & ",False," & lokalita & ",")
+                        fFile.WriteLine("Směna," & datum & "," & FormatDateTime(fSheet.Cells(i, 8), 4) & "," & datum & "," & FormatDateTime(fSheet.Cells(i, 13), 4) & ",False," & lokalita & ",")
+                    Else
+                        fFile.WriteLine("Směna," & datum & "," & FormatDateTime(fSheet.Cells(i, 6), 4) & "," & datum & "," & FormatDateTime(fSheet.Cells(i, 13), 4) & ",False," & lokalita & ",")
+                    End If
                 End If
         End Select
     End If
