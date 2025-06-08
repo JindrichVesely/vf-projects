@@ -1,0 +1,13 @@
+1.1.2
+- Opraveno NVP-M pokud je plánováno jako směna
+- Přidána lokalita Homeoffice
+
+1.1
+- Změněna logika dat v Excelu pro NVP-M, VACA, SickDay
+- Přidána možnost změny adresy podle názvu souboru
+
+1.0.1
+- Oprava textu a výpisu dat
+
+1.0
+- První funkční verze

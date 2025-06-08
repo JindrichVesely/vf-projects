@@ -1,3 +1,4 @@
+currentVersion = "1.1.2"
 Public Const lokalita1 = "Praha"
 Public Const lokalita1_adresa = "Vodafone náměstí Junkových 2 155 00 Praha"
 Public Const lokalita2 = "Chrudim"
