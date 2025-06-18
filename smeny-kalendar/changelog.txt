@@ -1,3 +1,8 @@
+1.2.1
+- Přidány dělené směny (nutné do výpisu přidat BRKDS)
+- Přidána kontrola verze oproti GitHubu
+- Kriz DEV mode
+
 1.1.2
 - Opraveno NVP-M pokud je plánováno jako směna
 - Přidána lokalita Homeoffice
